@@ -1,0 +1,31 @@
+<mat-card class="login-card">
+    <h2 class="title">ENTERPRISE ADMINISTRATOR</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" placeholder="admin@admin.com">
+            @if (isMailInvalid()) {
+            <mat-error>Email invalido</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" formControlName="password" placeholder="12345678">
+            @if (isPassword()) {
+            <mat-error>Contraseña invalida</mat-error>
+            }
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" class="full-with login-button" [disabled]="loading()">
+            @if (!loading()) {
+            Iniciar sesión
+            }
+            @if (loading()) {
+            <mat-spinner diameter="20"></mat-spinner>
+            }
+        </button>
+    </form>
+</mat-card>

@@ -1,0 +1,23 @@
+<mat-sidenav-container class="layout-container">
+    <mat-sidenav mode="side" opened>
+        <h3 class="menu-title">Menú</h3>
+        <button mat-button>
+            <mat-icon>dashboard</mat-icon>
+            Dashboard
+        </button>
+        <button mat-button>
+            <mat-icon>people</mat-icon>
+            Usuarios
+        </button>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <span>Enterprise Administrator</span>
+        </mat-toolbar>
+
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

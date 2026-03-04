@@ -1,0 +1,12 @@
+.layout-container {
+    height: 100vh;
+}
+
+mat-sidenav {
+    width: 12rem;
+    padding: 1rem;
+}
+
+.content {
+    padding: 2rem;
+}
