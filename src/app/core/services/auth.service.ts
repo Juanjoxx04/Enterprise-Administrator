@@ -18,7 +18,7 @@ export class AuthService {
     if (email === 'admin@admin.com' && password === '12345678') {
       const fakeToken = this.generateFakeToken();
       return of(fakeToken).pipe(
-        delay(1000),
+        delay(3000),
       );
     }
     return throwError(() => new Error('Credenciales invalidas'));

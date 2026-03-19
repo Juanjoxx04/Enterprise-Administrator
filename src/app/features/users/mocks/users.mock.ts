@@ -6,7 +6,7 @@ export const USERS_MOCK: User[] = [
         name: 'Juan Pérez',
         email: 'juan.perez@example.com',
         role: 'ADMIN',
-        status: 'ACTIVE',
+        status: 'ACTIVO',
         createdAt: new Date('2024-01-10')
     },
     {
@@ -14,7 +14,7 @@ export const USERS_MOCK: User[] = [
         name: 'María Gómez',
         email: 'maria.gomez@example.com',
         role: 'EDITOR',
-        status: 'ACTIVE',
+        status: 'ACTIVO',
         createdAt: new Date('2024-01-12')
     },
     {
@@ -22,7 +22,7 @@ export const USERS_MOCK: User[] = [
         name: 'Carlos Ruiz',
         email: 'carlos.ruiz@example.com',
         role: 'VIEWER',
-        status: 'INACTIVE',
+        status: 'INACTIVO',
         createdAt: new Date('2024-01-15')
     },
     {
@@ -30,7 +30,7 @@ export const USERS_MOCK: User[] = [
         name: 'Laura Martínez',
         email: 'laura.martinez@example.com',
         role: 'EDITOR',
-        status: 'ACTIVE',
+        status: 'ACTIVO',
         createdAt: new Date('2024-01-18')
     },
     {
@@ -38,7 +38,7 @@ export const USERS_MOCK: User[] = [
         name: 'Andrés Castillo',
         email: 'andres.castillo@example.com',
         role: 'VIEWER',
-        status: 'ACTIVE',
+        status: 'ACTIVO',
         createdAt: new Date('2024-01-22')
     },
     {
@@ -46,7 +46,7 @@ export const USERS_MOCK: User[] = [
         name: 'Sofía Ramírez',
         email: 'sofia.ramirez@example.com',
         role: 'ADMIN',
-        status: 'ACTIVE',
+        status: 'ACTIVO',
         createdAt: new Date('2024-02-01')
     },
     {
@@ -54,7 +54,7 @@ export const USERS_MOCK: User[] = [
         name: 'Daniel Torres',
         email: 'daniel.torres@example.com',
         role: 'EDITOR',
-        status: 'INACTIVE',
+        status: 'INACTIVO',
         createdAt: new Date('2024-02-05')
     },
     {
@@ -62,7 +62,7 @@ export const USERS_MOCK: User[] = [
         name: 'Camila Herrera',
         email: 'camila.herrera@example.com',
         role: 'VIEWER',
-        status: 'ACTIVE',
+        status: 'ACTIVO',
         createdAt: new Date('2024-02-08')
     },
     {
@@ -70,7 +70,7 @@ export const USERS_MOCK: User[] = [
         name: 'Felipe Vargas',
         email: 'felipe.vargas@example.com',
         role: 'EDITOR',
-        status: 'ACTIVE',
+        status: 'ACTIVO',
         createdAt: new Date('2024-02-15')
     },
     {
@@ -78,7 +78,7 @@ export const USERS_MOCK: User[] = [
         name: 'Natalia Moreno',
         email: 'natalia.moreno@example.com',
         role: 'VIEWER',
-        status: 'ACTIVE',
+        status: 'ACTIVO',
         createdAt: new Date('2024-02-20')
     }
 ];

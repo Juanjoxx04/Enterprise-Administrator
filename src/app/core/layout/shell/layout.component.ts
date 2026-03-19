@@ -20,5 +20,6 @@ import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
   styleUrl: './layout.component.css',
 })
 export class LayoutComponent {
-  
+
+  sidenavOpen = false;
 }

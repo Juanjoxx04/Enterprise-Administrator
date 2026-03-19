@@ -1,13 +1,18 @@
 <mat-card class="login-card">
-    <h2 class="title">ENTERPRISE ADMINISTRATOR</h2>
-
+    
+    <div class="logoImg">
+        <img class="imgStyle" src="icon-administrator.png" alt="logotipo plataforma de administracion de empresas">
+    </div>
+    
+    <h1 class="title">Iniciar sesión</h1>
+    
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        
+
         <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Email</mat-label>
+            <mat-label>Correo electronico</mat-label>
             <input matInput type="email" formControlName="email" placeholder="admin@admin.com">
             @if (isMailInvalid()) {
-            <mat-error>Email invalido</mat-error>
+            <mat-error>Correo invalido</mat-error>
             }
         </mat-form-field>
 
@@ -19,12 +24,14 @@
             }
         </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit" class="full-with login-button" [disabled]="loading()">
+        <button type="submit" class="login-button" [disabled]="loading()">
             @if (!loading()) {
             Iniciar sesión
             }
             @if (loading()) {
-            <mat-spinner diameter="20"></mat-spinner>
+                <div class="custom-spinner">
+                    <mat-spinner diameter="25"></mat-spinner>
+                </div>
             }
         </button>
     </form>

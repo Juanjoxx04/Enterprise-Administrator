@@ -1,31 +1,42 @@
+@reference "../../../../../styles.css";
+
 :host {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%;
-    background-color: rgb(0, 0, 175);
+    @apply flex justify-center items-center min-h-screen w-full bg-linear-to-b from-indigo-700 to-indigo-950;
 }
 
 .login-card {
-    width: 70%;
-    max-width: 500px;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    @apply max-w-md w-[90%] p-6 bg-white rounded-b-lg shadow-lg shadow-black;
+}
+
+.logoImg {
+    @apply flex justify-center select-none;
+}
+
+.imgStyle {
+    @apply w-[16rem] h-[16rem];
 }
 
 .title {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-weight: bold;
+    @apply text-xl font-semibold text-center mt-8 mb-6 text-indigo-800 select-none;
 }
 
 .full-width {
-    width: 100%;
-    margin-bottom: 2rem;
+    @apply w-full mb-7;
 }
 
 .login-button {
-    height: 3rem;
+ @apply w-32 h-10 bg-indigo-800 text-white py-2 rounded-2xl mx-auto block 
+ focus:outline-none focus:ring-2 focus:ring-indigo-400 mt-4 mb-4 transition-all duration-200 ease-in-out;
+}
+
+.login-button:hover {
+    @apply scale-105 bg-linear-to-br from-indigo-500 to-indigo-950 shadow-lg shadow-gray-500;
+}
+
+.custom-spinner {
+    @apply flex justify-center
+}
+
+::ng-deep circle {
+    @apply stroke-white
 }

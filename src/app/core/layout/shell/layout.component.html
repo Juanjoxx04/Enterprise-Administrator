@@ -1,23 +1,38 @@
 <mat-sidenav-container class="layout-container">
-    <mat-sidenav mode="side" opened>
-        <h3 class="menu-title">Menú</h3>
-        <button mat-button routerLink="/dashboard">
-            <mat-icon>dashboard</mat-icon>
-            Dashboard
-        </button>
-        <button mat-button routerLink="/users">
-            <mat-icon>people</mat-icon>
-            Usuarios
-        </button>
+
+    <mat-sidenav #sidenav mode="over" [opened]="sidenavOpen" (openedChange)="sidenavOpen = $event">
+        <div class="sidenav-header">
+            <span class="sidenav-title">Menú</span>
+            <button class="close" mat-icon-button (click)="sidenav.close()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+
+        <nav class="sidenav-nav">
+            <a class="nav-item" routerLink="/dashboard" (click)="sidenav.close()">
+                <mat-icon>dashboard</mat-icon>
+                <span>Dashboard</span>
+            </a>
+            <a class="nav-item" routerLink="/users" (click)="sidenav.close()">
+                <mat-icon>people</mat-icon>
+                <span>Usuarios</span>
+            </a>
+        </nav>
     </mat-sidenav>
 
-    <mat-sidenav-content>
-        <mat-toolbar color="primary">
-            <span>Enterprise Administrator</span>
+    <mat-sidenav-container>
+        <mat-toolbar color="primary" class="toolbar">
+            <button mat-icon-button class="hamburger-btn" (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <div>
+            <span class="toolbar-title">Enterprise Administrator</span>
+            </div>
         </mat-toolbar>
 
         <div class="content">
             <router-outlet></router-outlet>
         </div>
-    </mat-sidenav-content>
+    </mat-sidenav-container>
+
 </mat-sidenav-container>
