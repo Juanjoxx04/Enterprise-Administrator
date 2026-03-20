@@ -1,59 +1,81 @@
 @if (loading()) {
-<div class="loading loadingUsers">
-    <mat-spinner></mat-spinner>
-</div>
-} @else {
-<table mat-table [dataSource]="users()" class="mat-elevation-z2">
-    <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            {{element.id}}
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef>NOMBRE</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            {{element.name}}
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef>CORREO</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            {{element.email}}
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="role">
-        <mat-header-cell *matHeaderCellDef>ROL</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            {{element.role}}
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="status">
-        <mat-header-cell *matHeaderCellDef>ESTADO</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            {{element.status}}
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="createdAt">
-        <mat-header-cell *matHeaderCellDef>FECHA DE CREACIÓN</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            {{element.createdAt}}
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef>ACCIONES</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            {{element.actions}}
-        </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-</table>
+<app-spinner></app-spinner>
 }
+
+<div class="tableStyle">
+    <div class="p-4">
+        <div class="tableHeader">
+            <div>
+                <h5 class="textListUsers">Lista de usuarios</h5>
+                <p class="textInfoUsers">Informacion de todos los miembros</p>
+            </div>
+            <div class="buttonsAccionsHeader">
+                <button class="buttonViewAll" type="button">
+                    Ver todos
+                </button>
+                <button class="buttonAddUsers" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                        stroke-width="2" class="w-4 h-4">
+                        <path
+                            d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z">
+                        </path>
+                    </svg>
+                    Añadir usuario
+                </button>
+            </div>
+        </div>
+    </div>
+    <table mat-table [dataSource]="userDisplay()">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                {{element.id}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>NOMBRE</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                {{element.name}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>CORREO</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                {{element.email}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="role">
+            <mat-header-cell *matHeaderCellDef>ROL</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                {{element.role}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>ESTADO</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                {{element.status}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="createdAt">
+            <mat-header-cell *matHeaderCellDef>FECHA DE CREACIÓN</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                {{element.createdAt}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>ACCIONES</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                {{element.actions}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </table>
+</div>

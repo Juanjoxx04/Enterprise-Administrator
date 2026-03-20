@@ -1,5 +1,47 @@
-.loadingUsers {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@reference "../../../../../styles.css";
+
+.tableStyle {
+    @apply bg-white shadow-md rounded-xl overflow-hidden;
+}
+
+.tableHeader {
+    @apply flex items-center justify-between mb-6;
+}
+
+.textListUsers {
+    @apply text-xl font-semibold text-indigo-700 select-none;
+}
+
+.textInfoUsers {
+    @apply text-gray-700 text-sm mt-1 select-none;
+}
+
+.buttonsAccionsHeader {
+    @apply flex gap-2;
+}
+
+.buttonViewAll {
+    @apply  select-none rounded-lg border border-indigo-700 py-2 px-4 text-center 
+    align-middle font-sans text-xs font-bold uppercase text-indigo-700 transition-all 
+    hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none 
+    disabled:opacity-50 disabled:shadow-none;
+}
+
+.buttonAddUsers {
+    @apply flex select-none items-center gap-3 rounded-lg bg-indigo-700 py-2 px-4 text-center 
+    align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 
+    transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none 
+    active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none;
+}
+
+mat-header-cell {
+    @apply text-white text-xs font-normal uppercase border-y border-gray-300 py-3 px-4;
+}
+
+mat-cell {
+    @apply text-sm bg-white border-b border-gray-200 py-3 px-4;
+}
+
+table {
+    @apply bg-indigo-700;
 }

@@ -1,0 +1,9 @@
+@reference "../../../../styles.css";
+
+.loading {
+    @apply fixed inset-0 z-20 flex justify-center items-center bg-white;
+}
+
+::ng-deep circle {
+    @apply stroke-indigo-700;
+}

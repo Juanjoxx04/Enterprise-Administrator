@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { MatButton, MatButtonModule } from '@angular/material/button';
-import { MatCardActions, MatCardModule } from '@angular/material/card';
+import { Component, inject, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { Spinner } from "../../../../shared/components/spinner/spinner.component";
+import { DashBoardService } from '../../services/dashBoard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,11 +11,22 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    Spinner
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+
+  private dashBoardService = inject(DashBoardService);
+
+  loading = this.dashBoardService.loading;
+  error = this.dashBoardService.error;
+  dashBoard = this.dashBoardService.loadDashBoard;
+
+  ngOnInit(): void {
+    this.dashBoardService.loadDashBoard();
+  }
 
 }
