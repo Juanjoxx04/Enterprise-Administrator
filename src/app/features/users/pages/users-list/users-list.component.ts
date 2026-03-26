@@ -11,6 +11,7 @@ import { Spinner } from "../../../../shared/components/spinner/spinner.component
 import { UsersService } from '../../services/users.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialiogComponent } from '../../../../shared/components/confirm-dialog/confirm-dialiog.component';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-users-list',
@@ -49,17 +50,17 @@ export class UsersListComponent implements OnInit {
     this.usersService.getUsers();
   }
 
-  openDeleteDialog(id: string, name: string) {
+  openDeleteDialog(users: User) {
     const dialogRef = this.dialog.open(ConfirmDialiogComponent, {
       data: {
         title: 'Eliminar usuario',
-        message: `Desea eliminar el usuario de ${name}`
+        message: `Desea eliminar el usuario de ${users.name}`
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.onDelete(id);
+        this.onDelete(users.id);
       }
     })
   }
