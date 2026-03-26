@@ -10,7 +10,7 @@ export class UsersService {
   loading = signal(false);
   error = signal<string | null>(null);
 
-  loadUsers() {
+  getUsers() {
     this.loading.set(true);
     this.error.set(null);
 
@@ -20,4 +20,8 @@ export class UsersService {
     }, 2000)
   }
 
+  deleteUser(id: string) {
+    const updateUsers = this.users().filter(user => user.id !== id);
+    this.users.set(updateUsers);
+  }
 }

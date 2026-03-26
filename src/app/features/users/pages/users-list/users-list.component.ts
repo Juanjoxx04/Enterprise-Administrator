@@ -1,3 +1,5 @@
+import { Dialog } from '@angular/cdk/dialog';
+import { formatDate } from '@angular/common';
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
@@ -5,9 +7,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
-import { UsersService } from '../../services/users.service';
 import { Spinner } from "../../../../shared/components/spinner/spinner.component";
-import { formatDate } from '@angular/common';
+import { UsersService } from '../../services/users.service';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ConfirmDialiogComponent } from '../../../../shared/components/confirm-dialog/confirm-dialiog.component';
 
 @Component({
   selector: 'app-users-list',
@@ -18,7 +21,8 @@ import { formatDate } from '@angular/common';
     MatProgressBarModule,
     MatChipsModule,
     MatProgressSpinnerModule,
-    Spinner
+    Spinner,
+    MatDialogModule
   ],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.css',
@@ -26,6 +30,8 @@ import { formatDate } from '@angular/common';
 export class UsersListComponent implements OnInit {
 
   private usersService = inject(UsersService);
+
+  dialog = inject(MatDialog)
 
   users = this.usersService.users;
   loading = this.usersService.loading;
@@ -40,6 +46,25 @@ export class UsersListComponent implements OnInit {
   displayedColumns = ['id', 'name', 'email', 'role', 'status', 'createdAt', 'actions'];
 
   ngOnInit() {
-    this.usersService.loadUsers();
+    this.usersService.getUsers();
+  }
+
+  openDeleteDialog(id: string, name: string) {
+    const dialogRef = this.dialog.open(ConfirmDialiogComponent, {
+      data: {
+        title: 'Eliminar usuario',
+        message: `Desea eliminar el usuario de ${name}`
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.onDelete(id);
+      }
+    })
+  }
+
+  onDelete(id: string) {
+    this.usersService.deleteUser(id);
   }
 }
