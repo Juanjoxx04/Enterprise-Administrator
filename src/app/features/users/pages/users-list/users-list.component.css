@@ -1,11 +1,16 @@
 @reference "../../../../../styles.css";
 
 .tableStyle {
-    @apply bg-white shadow-md rounded-xl overflow-hidden;
+    @apply bg-white shadow-md rounded-xl;
 }
 
 .tableHeader {
     @apply flex items-center justify-between mb-6;
+}
+
+.tableScroll {
+    @apply w-full overflow-x-auto;
+        -webkit-overflow-scrolling: touch;
 }
 
 .textListUsers {
@@ -34,12 +39,16 @@
     active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none;
 }
 
+.mat-rol {
+    @apply justify-center!
+}
+
 mat-header-cell {
     @apply text-white text-xs font-normal uppercase border-y border-gray-300 py-3 px-4;
 }
 
 mat-cell {
-    @apply text-sm bg-white border-b border-gray-200 py-3 px-4;
+    @apply break-all whitespace-normal text-sm bg-white border-b border-gray-200 py-3 px-4;
 }
 
 table {

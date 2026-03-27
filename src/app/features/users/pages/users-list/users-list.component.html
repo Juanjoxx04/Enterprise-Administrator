@@ -25,62 +25,64 @@
             </div>
         </div>
     </div>
-    <table mat-table [dataSource]="userDisplay()">
-        <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-            <mat-cell *matCellDef="let user">
-                {{user.id}}
-            </mat-cell>
-        </ng-container>
+    <div class="tableScroll">
+        <table mat-table [dataSource]="userDisplay()">
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+                <mat-cell *matCellDef="let user">
+                    {{user.id}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>NOMBRE</mat-header-cell>
-            <mat-cell *matCellDef="let user">
-                {{user.name}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef>NOMBRE</mat-header-cell>
+                <mat-cell *matCellDef="let user">
+                    {{user.name}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="email">
-            <mat-header-cell *matHeaderCellDef>CORREO</mat-header-cell>
-            <mat-cell *matCellDef="let user">
-                {{user.email}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef>CORREO</mat-header-cell>
+                <mat-cell *matCellDef="let user">
+                    {{user.email}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="role">
-            <mat-header-cell *matHeaderCellDef>ROL</mat-header-cell>
-            <mat-cell *matCellDef="let user">
-                {{user.role}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="role">
+                <mat-header-cell *matHeaderCellDef class="mat-rol">ROL</mat-header-cell>
+                <mat-cell *matCellDef="let user" class="mat-rol">
+                    {{user.role}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="status">
-            <mat-header-cell *matHeaderCellDef>ESTADO</mat-header-cell>
-            <mat-cell *matCellDef="let user">
-                {{user.status}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef>ESTADO</mat-header-cell>
+                <mat-cell *matCellDef="let user">
+                    {{user.status}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="createdAt">
-            <mat-header-cell *matHeaderCellDef>FECHA DE CREACIÓN</mat-header-cell>
-            <mat-cell *matCellDef="let user">
-                {{user.createdAt}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="createdAt">
+                <mat-header-cell *matHeaderCellDef>FECHA DE CREACIÓN</mat-header-cell>
+                <mat-cell *matCellDef="let user">
+                    {{user.createdAt}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef>ACCIONES</mat-header-cell>
-            <mat-cell *matCellDef="let user">
-                <button matIconButton>
-                    <mat-icon>edit</mat-icon>
-                </button>
-                <button matIconButton (click)="openDeleteDialog(user)">
-                    <mat-icon>delete</mat-icon>
-                </button>
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef>ACCIONES</mat-header-cell>
+                <mat-cell *matCellDef="let user">
+                    <button matIconButton>
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button matIconButton (click)="openDeleteDialog(user)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-    </table>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </table>
+    </div>
 </div>
