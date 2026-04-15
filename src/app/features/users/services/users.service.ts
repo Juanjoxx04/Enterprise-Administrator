@@ -8,10 +8,10 @@ import { User } from './../models/user';
 })
 export class UsersService {
 
-  private apiUrl = "https://69dd9959410caa3d47b9a9a4.mockapi.io/api/v1/users"
+  private url = "https://69dd9959410caa3d47b9a9a4.mockapi.io/api/v1/users"
   constructor(private http: HttpClient) { }
 
   get(): Observable<User[]> {
-    return this.http.get<User[]>(this.apiUrl);
+    return this.http.get<User[]>(this.url);
   }
 }
