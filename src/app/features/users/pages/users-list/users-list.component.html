@@ -2,6 +2,13 @@
 <app-spinner></app-spinner>
 }
 
+@if (error()) {
+<div class="flex justify-center items-center w-full text-5xl fixed inset-0 select-none">
+    <h1>ERROR AL CARGAR LOS USUARIOS</h1>
+</div>
+}
+
+@if (!loading() && !error()) {
 <div class="tableStyle">
     <div class="p-4">
         <div class="tableHeader">
@@ -86,3 +93,4 @@
         </table>
     </div>
 </div>
+}

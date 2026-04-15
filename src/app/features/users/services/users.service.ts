@@ -1,27 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { USERS_MOCK } from '../mocks/users.mock';
+import { Observable } from 'rxjs';
 import { User } from './../models/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  users = signal<User[]>([]);
-  loading = signal(false);
-  error = signal<string | null>(null);
 
-  getUsers() {
-    this.loading.set(true);
-    this.error.set(null);
+  private apiUrl = "https://69dd9959410caa3d47b9a9a4.mockapi.io/api/v1/users"
+  constructor(private http: HttpClient) { }
 
-    setTimeout(() => {
-      this.users.set(USERS_MOCK);
-      this.loading.set(false);
-    }, 2000)
-  }
-
-  deleteUser(id: string) {
-    const updateUsers = this.users().filter(user => user.id !== id);
-    this.users.set(updateUsers);
+  get(): Observable<User[]> {
+    return this.http.get<User[]>(this.apiUrl);
   }
 }
