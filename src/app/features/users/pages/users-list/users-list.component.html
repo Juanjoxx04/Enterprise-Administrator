@@ -17,9 +17,8 @@
                 <p class="textInfoUsers">Informacion de todos los miembros</p>
             </div>
             <div class="buttonsAccionsHeader">
-                <button class="buttonViewAll" type="button">
-                    Ver todos
-                </button>
+                <input class="ViewAllUsers" [value]="query()" (input)="query.set($event.target.value)"
+                    placeholder="Buscar Usuario...">
                 <button class="buttonAddUsers" type="button">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
                         stroke-width="2" class="w-4 h-4">

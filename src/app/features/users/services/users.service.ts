@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './../models/user';
 
@@ -8,10 +8,20 @@ import { User } from './../models/user';
 })
 export class UsersService {
 
+  private http = inject(HttpClient);
   private url = "https://69dd9959410caa3d47b9a9a4.mockapi.io/api/v1/users"
-  constructor(private http: HttpClient) { }
 
-  get(): Observable<User[]> {
+  getAll(): Observable<User[]> {
     return this.http.get<User[]>(this.url);
+  }
+
+  getById(id: string): Observable<User> {
+    return this.http.get<User>(`${this.url}/${id}`);
+  }
+
+  search(query: string): Observable<User[]> {
+    return this.http.get<User[]>(this.url, {
+      params: { search: query }
+    });
   }
 }

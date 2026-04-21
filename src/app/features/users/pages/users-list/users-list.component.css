@@ -24,11 +24,11 @@
     @apply flex gap-2 flex-col md:flex-row;
 }
 
-.buttonViewAll {
-    @apply  select-none rounded-lg border border-indigo-700 py-2 px-4 text-center 
+.ViewAllUsers {
+    @apply rounded-lg border border-indigo-700 py-2 px-4 text-center 
     align-middle font-sans text-xs font-bold uppercase text-indigo-700 transition-all 
     hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none 
-    disabled:opacity-50 disabled:shadow-none;
+    disabled:opacity-50 disabled:shadow-none caret-indigo-700 outline-indigo-700;
 }
 
 .buttonAddUsers {
