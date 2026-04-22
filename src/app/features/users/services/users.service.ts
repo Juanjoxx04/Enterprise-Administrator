@@ -24,4 +24,13 @@ export class UsersService {
       params: { search: query }
     });
   }
+
+  create(user: User): Observable<User> {
+    return this.http.post<User>(this.url, user);
+  }
+
+  delete(id: string): Observable<User> {
+    return this.http.delete<User>(`${this.url}/${id}`)
+  }
+
 }

@@ -13,6 +13,7 @@ import { ConfirmDialiogComponent } from '../../../../shared/components/confirm-d
 import { Spinner } from "../../../../shared/components/spinner/spinner.component";
 import { User } from '../../models/user';
 import { UsersService } from '../../services/users.service';
+import { FormCreateUserComponent } from '../../../../shared/components/form-create/form-create-user.component';
 
 @Component({
   selector: 'app-users-list',
@@ -67,6 +68,10 @@ export class UsersListComponent {
       })
   }
 
+  openCreateuserDialog() {
+    const dialogRef = this.dialog.open(FormCreateUserComponent)
+  }
+
   openDeleteDialog(users: User) {
     const dialogRef = this.dialog.open(ConfirmDialiogComponent, {
       data: {
@@ -83,6 +88,13 @@ export class UsersListComponent {
   }
 
   onDelete(id: string) {
-    // this.usersService.delete(id);
+    this.usersService.delete(id).subscribe({
+      next: () => {
+        this.users.set(this.users().filter(u => u.id !== id));
+      },
+      error: () => {
+        this.error.set(`Error al eliminar el usuario`);
+      }
+    })
   }
 }

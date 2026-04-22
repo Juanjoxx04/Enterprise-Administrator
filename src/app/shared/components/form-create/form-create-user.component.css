@@ -1,0 +1,42 @@
+@reference "../../../../styles.css";
+
+.formCreateUser {
+    @apply flex flex-col w-full mb-2;
+}
+
+.title {
+    @apply bg-indigo-700 text-white text-center py-4 text-2xl font-medium;
+}
+
+.space {
+    @apply py-6 m-5;
+}
+
+.fields {
+    @apply flex flex-col gap-1;
+}
+
+.buttonsOptions {
+    @apply flex justify-center items-center gap-4 mt-4 mb-5;
+}
+
+.cancelButton {
+    @apply cursor-pointer px-5 py-2 rounded-lg border border-indigo-700 text-indigo-700 transition-all
+     hover:bg-indigo-100 active:scale-90 select-none;
+}
+
+.saveButton {
+    @apply cursor-pointer px-5 py-2 rounded-lg bg-indigo-700 text-white transition-all hover:bg-indigo-900 
+    active:scale-90 select-none;
+}
+form {
+    @apply flex flex-col gap-7;
+}
+
+label {
+    @apply text-base italic;
+}
+
+input, select {
+    @apply border border-indigo-700 py-3 px-4 rounded-lg outline-indigo-700;
+}
