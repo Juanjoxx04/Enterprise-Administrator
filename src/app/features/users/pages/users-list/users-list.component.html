@@ -19,7 +19,7 @@
             <div class="buttonsAccionsHeader">
                 <input class="ViewAllUsers" [value]="query()" (input)="query.set($event.target.value)"
                     placeholder="Buscar Usuario...">
-                <button class="buttonAddUsers" type="button" (click)="openCreateuserDialog()">
+                <button class="buttonAddUsers" type="button" (click)="createuserDialog()">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
                         stroke-width="2" class="w-4 h-4">
                         <path
@@ -78,10 +78,10 @@
             <ng-container matColumnDef="actions">
                 <mat-header-cell *matHeaderCellDef class="mat-center">ACCIONES</mat-header-cell>
                 <mat-cell *matCellDef="let user" class="mat-center">
-                    <button matIconButton>
+                    <button matIconButton (click)="updateDialog(user)">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button matIconButton (click)="openDeleteDialog(user)">
+                    <button matIconButton (click)="deleteDialog(user)">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </mat-cell>

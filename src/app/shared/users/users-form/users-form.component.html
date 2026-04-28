@@ -1,0 +1,39 @@
+<div class="formCreateUser">
+    <div>
+        <h1 class="title">{{ data.title }}</h1>
+    </div>
+    <div class="space">
+        <form [formGroup]="form">
+            <div class="fields">
+                <label for="name">NOMBRE</label>
+                <input formControlName="name" id="name" placeholder="Nombre de usuario">
+            </div>
+            <div class="fields">
+                <label for="email">CORREO</label>
+                <input formControlName="email" id="email" placeholder="Correo electrónico">
+            </div>
+            <div class="fields">
+                <label for="role">ROL</label>
+                <select formControlName="role" id="role" placeholder="Nombre de usuario">
+                    <option value="">Selecciona un rol</option>
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="EDITOR">EDITOR</option>
+                    <option value="VIEWER">VIEWER</option>
+                </select>
+            </div>
+            <div class="fields">
+                <label for="status">ESTADO</label>
+                <select formControlName="status" id="status" placeholder="Nombre de usuario">
+                    <option value="">Selecciona un estado</option>
+                    <option value="ACTIVO">ACTIVO</option>
+                    <option value="INACTIVO">INACTIVO</option>
+                </select>
+            </div>
+            <div class="buttonsOptions">
+                <button class="cancelButton" type="button" (click)="onCancel()">Cancelar</button>
+                <button class="saveButton" type="submit" (click)="onSave()">{{data.save}}</button>
+
+            </div>
+        </form>
+    </div>
+</div>

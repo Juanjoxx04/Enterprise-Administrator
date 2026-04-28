@@ -11,9 +11,9 @@ import { MatTableModule } from '@angular/material/table';
 import { debounceTime, switchMap } from 'rxjs';
 import { ConfirmDialiogComponent } from '../../../../shared/components/confirm-dialog/confirm-dialiog.component';
 import { Spinner } from "../../../../shared/components/spinner/spinner.component";
+import { UserFormComponent } from '../../../../shared/users/users-form/users-form.component';
 import { User } from '../../models/user';
 import { UsersService } from '../../services/users.service';
-import { FormCreateUserComponent } from '../../../../shared/components/form-create/form-create-user.component';
 
 @Component({
   selector: 'app-users-list',
@@ -25,7 +25,7 @@ import { FormCreateUserComponent } from '../../../../shared/components/form-crea
     MatChipsModule,
     MatProgressSpinnerModule,
     Spinner,
-    MatDialogModule
+    MatDialogModule,
   ],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.css',
@@ -61,18 +61,68 @@ export class UsersListComponent {
           this.users.set(res);
           this.loading.set(false);
         },
-        error: (err) => {
+        error: () => {
           this.error.set('no se encontro el usuario');
           this.loading.set(false);
         }
       })
   }
 
-  openCreateuserDialog() {
-    const dialogRef = this.dialog.open(FormCreateUserComponent)
+  createuserDialog() {
+    const dialogRef = this.dialog.open(UserFormComponent, {
+      data: {
+        title: 'Crear usuario',
+        save: 'Guardar'
+      }
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        this.create(res);
+      }
+    })
   }
 
-  openDeleteDialog(users: User) {
+  create(user: User) {
+    this.usersService.create(user).subscribe({
+      next: (res) => {
+        this.users.set([...this.users(), res]);
+      },
+      error: () => {
+        this.error.set('Error al crear el usuario');
+        this.loading.set(false);
+      }
+    })
+  }
+
+  updateDialog(user: User) {
+    const dialogRef = this.dialog.open(UserFormComponent, {
+      data: {
+        title: 'Editar Usuario',
+        save: 'Editar',
+        user
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        this.update(user.id, res);
+      }
+    })
+  }
+
+  update(id: string, user: User) {
+    this.usersService.update(id, user).subscribe({
+      next: (res) => {
+        this.users.set(this.users().map(u => u.id === id ? res : u));
+      },
+      error: () => {
+        this.error.set('Error al editar el usuario');
+        this.loading.set(false);
+      }
+    })
+  }
+
+  deleteDialog(users: User) {
     const dialogRef = this.dialog.open(ConfirmDialiogComponent, {
       data: {
         title: 'Eliminar usuario',
@@ -80,8 +130,8 @@ export class UsersListComponent {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
         this.onDelete(users.id);
       }
     })
